@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "webpack serve --config config/webpack.dev.js"
+  },
   "dependencies": {
     "bootstrap": "^5.2.0",
     "react": "^18.2.0",
