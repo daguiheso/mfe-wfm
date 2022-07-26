@@ -1,12 +1,17 @@
 import React from 'react'
+import Header from './components/Header'
 import MarketingApp from './components/MarketingApp'
+import { BrowserRouter } from 'react-router-dom'
+import './scss/index.scss'
 
 const App = () => {
   return (
-    <>
-      <h1>Microfronts!</h1>
-      <MarketingApp />
-    </>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <MarketingApp />
+      </div>
+    </BrowserRouter>
   )
 }
 
