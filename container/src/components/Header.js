@@ -18,7 +18,7 @@ const Header = ({ signedIn, onSignOut }) => {
           <div className='col-6 d-flex justify-content-end'>
             <ul className='d-flex mb-0 pl-0'>
               <li className='list-group-item p-2 d-flex align-items-center'>
-                <Link className='text-white' to='/'>daguiheso</Link>
+                <Link className='text-white' to='/pricing'>daguiheso</Link>
               </li>
               <li className='list-group-item p-2'>
                 <Link className='text-white' to='/' onClick={onClick}>
