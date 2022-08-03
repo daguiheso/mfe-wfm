@@ -7,6 +7,7 @@ import './scss/index.scss'
 export default () => {
   return (
     <MemoryRouter>
+
       <Routes>
         <Route exact path="pricing" element={<Pricing/>} />
         <Route path="/" element={<Landing/>} />

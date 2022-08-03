@@ -9,6 +9,7 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Header />
+
         <MarketingApp />
       </div>
     </BrowserRouter>
