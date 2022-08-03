@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Copyright = () => {
   return (
@@ -18,9 +18,45 @@ const Copyright = () => {
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const Album = () => {
+  let location = useLocation()
+  React.useEffect(
+    async () => {
+      if (onNavigate) onNavigate(location.pathname)
+    },
+    [location]
+  )
+
+  const [data, dataSet] = useState()
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://ec2-54-145-33-139.compute-1.amazonaws.com:8083/profile/me', {
+        headers: {
+          token: sessionStorage.getItem('refreshToken')
+        }
+      })
+      const result = await response.json()
+      dataSet(result)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  React.useEffect(() => {
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    sessionStorage.setItem('refreshToken', params.token)
+    fetchData()
+  }, [])
+
+  const getProfile = () => {
+    fetchData()
+  }
+
   return (
     <>
       <main>
+        <button onClick={getProfile}>Request profile/me</button>
         <section className='container text-center py-5'>
           <h1>Home Page</h1>
           <h5>

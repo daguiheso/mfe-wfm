@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Copyright = () => {
   return (
@@ -84,6 +84,14 @@ const footers = [
 ];
 
 const Pricing = () => {
+  let location = useLocation()
+  React.useEffect(
+    () => {
+      if (onNavigate) onNavigate(location.pathname)
+    },
+    [location]
+  )
+
   return (
     <>
       <section className='container py-5 text-center'>

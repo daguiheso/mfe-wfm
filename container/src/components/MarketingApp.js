@@ -5,7 +5,11 @@ const MarketingApp = () => {
   const ref = useRef(null)
 
   useEffect(() => {
-    mount(ref.current)
+    mount(ref.current, {
+      onNavigate: (nextPathname) => {
+        if (window.location.pathname !== nextPathname) history.pushState(null, null, nextPathname)
+      }
+    })
   })
 
   return <section className='' ref={ref} />
